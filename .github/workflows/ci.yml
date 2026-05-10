@@ -1,4 +1,4 @@
-name: CI
+name: API Tests
 
 on:
   push:
@@ -7,16 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  api-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Say hello
-        run: echo "Hello from GitHub Actions!"
+      - name: Install Newman
+        run: npm install -g newman
 
-      - name: Show environment
-        run: |
-          echo "OS: $(uname -a)"
-          echo "User: $(whoami)"
-          echo "Working dir: $(pwd)"
+      - name: Run API Tests
+        run: newman run "My Collection.postman_collection2.json"
