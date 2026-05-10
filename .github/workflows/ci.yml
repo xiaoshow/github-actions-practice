@@ -16,4 +16,4 @@ jobs:
         run: npm install -g newman
 
       - name: Run API Tests
-        run: newman run "My Collection.postman_collection2.json"
+        run: newman run "My Collection.postman_collection3.json" --env-var "base_url=https://api.github.com"
